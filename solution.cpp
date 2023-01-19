@@ -50,7 +50,7 @@ void checkSolution(string solutionFile) {
 			else
 			{
 				mistakes++;
-				cout << "Wrong answer, you have " << leftMistakes - mistakes << " more chances.";
+				cout << "Wrong answer, you have " << leftMistakes - mistakes << " more chances.\n The true answer is: " << solution << "\nEnter next one.\n";
 			}
 			solFile.get();
 		}
