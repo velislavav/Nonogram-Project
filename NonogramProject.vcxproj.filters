@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\levels">
+      <UniqueIdentifier>{a9f01220-e6d6-4e3d-a799-440ffdf6d639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\solutions">
+      <UniqueIdentifier>{43a7ff8b-a9bc-4c15-b7f5-1c2463a3e89e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="solution.cpp">
@@ -21,13 +27,13 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="levels_tasks\L1_V1.txt">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\levels</Filter>
     </Text>
     <Text Include="levels_tasks\L1_V2.txt">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\levels</Filter>
     </Text>
     <Text Include="solutions\sol1.1.txt">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\solutions</Filter>
     </Text>
   </ItemGroup>
 </Project>
