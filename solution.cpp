@@ -19,7 +19,7 @@ void printTask(string inputFile) {
 		while (taskFile.getline(task, 1024, '\n'))
 		{
 
-			cout << task << '\n';
+			cout << task << endl;
 			taskFile.get();
 		}
 		taskFile.close();
@@ -88,11 +88,11 @@ void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
 	case 1:
 		switch (version) {
 		case 1:
-			solutionFile = "sol1.1.txt";
+			solutionFile = "solutions/sol1.1.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
-			solutionFile = "sol1.2.txt";
+			solutionFile = "solutions/sol1.2.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
@@ -100,11 +100,11 @@ void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
 	case 2:
 		switch (version) {
 		case 1:
-			solutionFile = "sol2.1.txt";
+			solutionFile = "solutions/sol2.1.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
-			solutionFile = "sol2.2.txt";
+			solutionFile = "solutions/sol2.2.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
@@ -112,11 +112,11 @@ void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
 	case 3:
 		switch (version) {
 		case 1:
-			solutionFile = "sol3.1.txt";
+			solutionFile = "solutions/sol3.1.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
-			solutionFile = "sol3.2.txt";
+			solutionFile = "solutions/sol3.2.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
@@ -124,11 +124,11 @@ void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
 	case 4:
 		switch (version) {
 		case 1:
-			solutionFile = "sol4.1.txt";
+			solutionFile = "solutions/sol4.1.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
-			solutionFile = "sol4.2.txt";
+			solutionFile = "solutions/sol4.2.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
@@ -136,11 +136,11 @@ void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
 	case 5:
 		switch (version) {
 		case 1:
-			solutionFile = "sol5.1.txt";
+			solutionFile = "solutions/sol5.1.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
-			solutionFile = "sol5.2.txt";
+			solutionFile = "solutions/sol5.2.txt";
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
@@ -157,12 +157,12 @@ void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) 
 	case 1:
 		switch (version) {
 		case 1:
-			inputFile = "L1_V1.txt";
+			inputFile = "levelsTasks/L1_V1.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
-			inputFile = "L1_V2.txt";
+			inputFile = "levelsTasks/L1_V2.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
@@ -171,12 +171,12 @@ void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) 
 	case 2:
 		switch (version) {
 		case 1:
-			inputFile = "L2_V1.txt";
+			inputFile = "levelsTasks/L2_V1.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
-			inputFile = "L2_V2.txt";
+			inputFile = "levelsTasks/L2_V2.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
@@ -185,12 +185,12 @@ void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) 
 	case 3:
 		switch (version) {
 		case 1:
-			inputFile = "L3_V1.txt";
+			inputFile = "levelsTasks/L3_V1.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
-			inputFile = "L3_V2.txt";
+			inputFile = "levelsTasks/L3_V2.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
@@ -199,12 +199,12 @@ void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) 
 	case 4:
 		switch (version) {
 		case 1:
-			inputFile = "L4_V1.txt";
+			inputFile = "levelsTasks/L4_V1.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
-			inputFile = "L4_V2.txt";
+			inputFile = "levelsTasks/L4_V2.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
@@ -213,12 +213,12 @@ void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) 
 	case 5:
 		switch (version) {
 		case 1:
-			inputFile = "L5_V1.txt";
+			inputFile = "levelsTasks/L5_V1.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
-			inputFile = "L5_V2.txt";
+			inputFile = "levelsTasks/L5_V2.txt";
 			printTask(inputFile);
 			mySolution(level, version, levelIsFinished, lostGame);
 			break;
