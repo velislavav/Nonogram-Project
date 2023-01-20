@@ -191,12 +191,7 @@ void playTheGame(bool &gameOver) {
 
 
 int main() {
-	//char username[1024];
-	//char reachedLevel[1024];
-
 	bool gameOver = false;
-	
-
 	playTheGame(gameOver);
 
 	if (gameOver == true)
