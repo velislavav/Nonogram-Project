@@ -35,5 +35,8 @@
     <Text Include="solutions\sol1.1.txt">
       <Filter>Resource Files\solutions</Filter>
     </Text>
+    <Text Include="L2_V1.txt">
+      <Filter>Resource Files\levels</Filter>
+    </Text>
   </ItemGroup>
 </Project>

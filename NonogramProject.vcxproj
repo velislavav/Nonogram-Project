@@ -142,6 +142,7 @@
     <ClCompile Include="solution.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="L2_V1.txt" />
     <Text Include="levels_tasks\L1_V1.txt" />
     <Text Include="levels_tasks\L1_V2.txt" />
     <Text Include="solutions\sol1.1.txt" />
