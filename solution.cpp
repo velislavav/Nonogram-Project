@@ -1,13 +1,29 @@
+/**
+*
+* Solution to course project # 1
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2022/2023
+*
+* @author Velislava Veneva
+* @idnumber 5MI0600243 
+* @compiler VC
+*
+* <main file>
+*
+*/
+
 #include <iostream>
 #include <fstream>
 using namespace std;
 const int MAX_MISTAKES = 3;
 const int MAX_LEVELS = 5;
 
+
+//print the task like a matrix from file
 void printTask(string inputFile) {
 	ifstream taskFile(inputFile, ios::in);
 	char task[1024];
-	//taskFile.open(inputFile);
 
 	if (!taskFile)
 	{
@@ -26,10 +42,10 @@ void printTask(string inputFile) {
 	}
 }
 
+//check if the input from the player is the same as the one in the solution
 void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) {
 	ifstream solFile(solutionFile, ios::in);
 	char solution[1024];
-	//char trueAnswer[1024];
 	char temp[1024];
 	int mistakes = 0;
 	int leftMistakes = MAX_MISTAKES;
@@ -40,6 +56,7 @@ void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) {
 	}
 	else
 	{
+		//the player enters for every empty box 'full' or 'empty'
 		cout << "For 'full' enter '#' and for empty enter '.' !\n";
 		while (solFile.getline(solution, 1024, '\n') )
 		{
@@ -81,152 +98,28 @@ void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) {
 	}
 }
 
+
+//choosing the file with the correct solution for the chosen level and version
 void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
-	string solutionFile = "";
+	string solutionFile = "solutions/solx.x.txt";
+	solutionFile[13] = level + '0';
+	solutionFile[15] = version + '0';
+	checkSolution(solutionFile, levelIsFinished, lostGame);
 
-	switch (level) {
-	case 1:
-		switch (version) {
-		case 1:
-			solutionFile = "solutions/sol1.1.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		case 2:
-			solutionFile = "solutions/sol1.2.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 2:
-		switch (version) {
-		case 1:
-			solutionFile = "solutions/sol2.1.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		case 2:
-			solutionFile = "solutions/sol2.2.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 3:
-		switch (version) {
-		case 1:
-			solutionFile = "solutions/sol3.1.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		case 2:
-			solutionFile = "solutions/sol3.2.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 4:
-		switch (version) {
-		case 1:
-			solutionFile = "solutions/sol4.1.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		case 2:
-			solutionFile = "solutions/sol4.2.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 5:
-		switch (version) {
-		case 1:
-			solutionFile = "solutions/sol5.1.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		case 2:
-			solutionFile = "solutions/sol5.2.txt";
-			checkSolution(solutionFile, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	}
+	
 }
 
-
+//choosing the file with the task for the chosen level and version
 void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) {
-	string inputFile = "";
+	string inputFile = "levelsTasks/Lx_Vx.txt";
+	inputFile[13] = level + '0';
+	inputFile[16] = version + '0';
+	printTask(inputFile);
+	mySolution(level, version, levelIsFinished, lostGame);
 
-
-	switch (level) {
-	case 1:
-		switch (version) {
-		case 1:
-			inputFile = "levelsTasks/L1_V1.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		case 2:
-			inputFile = "levelsTasks/L1_V2.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 2:
-		switch (version) {
-		case 1:
-			inputFile = "levelsTasks/L2_V1.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		case 2:
-			inputFile = "levelsTasks/L2_V2.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 3:
-		switch (version) {
-		case 1:
-			inputFile = "levelsTasks/L3_V1.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		case 2:
-			inputFile = "levelsTasks/L3_V2.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 4:
-		switch (version) {
-		case 1:
-			inputFile = "levelsTasks/L4_V1.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		case 2:
-			inputFile = "levelsTasks/L4_V2.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	case 5:
-		switch (version) {
-		case 1:
-			inputFile = "levelsTasks/L5_V1.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		case 2:
-			inputFile = "levelsTasks/L5_V2.txt";
-			printTask(inputFile);
-			mySolution(level, version, levelIsFinished, lostGame);
-			break;
-		}
-		break;
-	}
 }
 
+//the game step by step
 void playTheGame(bool &gameOver) {
 	cout << "Do you want to start a new game?" << endl << "For yes, enter 1, else enter 0!" << endl;
 	int yesOrNo = 0;
