@@ -26,7 +26,7 @@ void printTask(string inputFile) {
 	}
 }
 
-void checkSolution(string solutionFile, bool &levelIsFinished) {
+void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) {
 	ifstream solFile(solutionFile, ios::in);
 	char solution[1024];
 	//char trueAnswer[1024];
@@ -54,7 +54,15 @@ void checkSolution(string solutionFile, bool &levelIsFinished) {
 			else
 			{
 				mistakes++;
-				cout << "Wrong answer, you have " << leftMistakes - mistakes << " more chances.\nThe true answer is: " << solution << endl;
+				leftMistakes--;
+				cout << "Wrong answer, you have " << leftMistakes<< " more chances.\nThe true answer is: " << solution << endl;
+				if (leftMistakes == 0)
+				{
+					lostGame = true;
+					mistakes = 0;
+					solFile.close();
+					break;
+				}
 			}
 
 			if (solFile.eof())
@@ -73,7 +81,7 @@ void checkSolution(string solutionFile, bool &levelIsFinished) {
 	}
 }
 
-void mySolution(int level, int version, bool &levelIsFinished) {
+void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
 	string solutionFile = "";
 
 	switch (level) {
@@ -81,7 +89,7 @@ void mySolution(int level, int version, bool &levelIsFinished) {
 		switch (version) {
 		case 1:
 			solutionFile = "sol1.1.txt";
-			checkSolution(solutionFile, levelIsFinished);
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
 
@@ -124,7 +132,7 @@ void mySolution(int level, int version, bool &levelIsFinished) {
 }
 
 
-void chooseLevel(int level, int version, bool &levelIsFinished) {
+void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) {
 	string inputFile = "";
 
 
@@ -134,7 +142,7 @@ void chooseLevel(int level, int version, bool &levelIsFinished) {
 		case 1:
 			inputFile = "L1_V1.txt";
 			printTask(inputFile);
-			mySolution(level, version, levelIsFinished);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
 			inputFile = "L1_V2.txt";
@@ -177,7 +185,7 @@ void chooseLevel(int level, int version, bool &levelIsFinished) {
 	}
 }
 
-void playTheGame(bool &gameOver, bool &levelIsFinished) {
+void playTheGame(bool &gameOver) {
 	cout << "Do you want to start a new game?" << endl << "For yes, enter 1, else enter 0!" << endl;
 	int yesOrNo = 0;
 	cin >> yesOrNo;
@@ -206,8 +214,9 @@ void playTheGame(bool &gameOver, bool &levelIsFinished) {
 
 		if (levelIsChosen && versionIsChosen)
 		{
-			
-			chooseLevel(level, version, levelIsFinished);
+			bool levelIsFinished = false;
+			bool lostGame = false;
+			chooseLevel(level, version, levelIsFinished, lostGame);
 
 			if (levelIsFinished == true)
 			{
@@ -228,13 +237,14 @@ void playTheGame(bool &gameOver, bool &levelIsFinished) {
 				}
 
 			}
-			/*
-			else
+			 if (lostGame == true)
 			{
 				cout << "Do you want to try again?\nIf yes enter 1, else enter 0.\n";
-				cin >>
+				versionIsChosen = false;
+				levelIsChosen = true;
+				cin >> yesOrNo;
+				
 			}
-			*/
 		}
 
 	}
@@ -250,13 +260,13 @@ int main() {
 	//char reachedLevel[1024];
 
 	bool gameOver = false;
-	bool levelIsFinished = false;
+	
 
-	playTheGame(gameOver, levelIsFinished);
+	playTheGame(gameOver);
 
 	if (gameOver == true)
 	{
 		gameOver = false;
-		playTheGame(gameOver, levelIsFinished);
+		playTheGame(gameOver);
 	}
 }
