@@ -68,7 +68,7 @@ void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) {
 			if (solFile.eof())
 			{
 				levelIsFinished = true;
-				cout << "You finished this level.\nContinue with next one.\n";
+				cout << "You finished this level.\n\n";
 
 			}
 			else
@@ -92,39 +92,56 @@ void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
 			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
-
+			solutionFile = "sol1.2.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 2:
 		switch (version) {
 		case 1:
+			solutionFile = "sol2.1.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
+			solutionFile = "sol2.2.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 3:
 		switch (version) {
 		case 1:
+			solutionFile = "sol3.1.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
+			solutionFile = "sol3.2.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 4:
 		switch (version) {
 		case 1:
+			solutionFile = "sol4.1.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
+			solutionFile = "sol4.2.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 5:
 		switch (version) {
 		case 1:
+			solutionFile = "sol5.1.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		case 2:
+			solutionFile = "sol5.2.txt";
+			checkSolution(solutionFile, levelIsFinished, lostGame);
 			break;
 		}
 		break;
@@ -147,38 +164,63 @@ void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) 
 		case 2:
 			inputFile = "L1_V2.txt";
 			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 2:
 		switch (version) {
 		case 1:
+			inputFile = "L2_V1.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
+			inputFile = "L2_V2.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 3:
 		switch (version) {
 		case 1:
+			inputFile = "L3_V1.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
+			inputFile = "L3_V2.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 4:
 		switch (version) {
 		case 1:
+			inputFile = "L4_V1.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
+			inputFile = "L4_V2.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		}
 		break;
 	case 5:
 		switch (version) {
 		case 1:
+			inputFile = "L5_V1.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		case 2:
+			inputFile = "L5_V2.txt";
+			printTask(inputFile);
+			mySolution(level, version, levelIsFinished, lostGame);
 			break;
 		}
 		break;
@@ -227,7 +269,7 @@ void playTheGame(bool &gameOver) {
 					versionIsChosen = false;
 					levelIsFinished = false;
 					cin >> yesOrNo;
-					if (yesOrNo == 0) {
+					if (yesOrNo == 1) {
 						gameOver = true;
 					}
 				}
