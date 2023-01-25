@@ -15,13 +15,65 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 const int MAX_MISTAKES = 3;
 const int MAX_LEVELS = 5;
 
+void newAccount(string username, string password)
+{
+	ofstream newAccount("accounts/" + username + ".txt");
+	newAccount << password << endl;
+	newAccount.close();
+}
+
+bool logedIn(string username, string password)
+{
+	ifstream openAccount("accounts/" + username + ".txt");
+	string enteredPassword;
+	getline(openAccount, enteredPassword);
+
+	if (!openAccount || enteredPassword != password)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+void logInOrSignIn()
+{
+	string username;
+	string password;
+	bool logIn;
+	cout << "Press 1 for log in or press 0 for sign in.\n";
+	cin >> logIn;
+
+	cout << "Please enter username\n";
+	cin >> username;
+	cout << "Please enter password\n";
+	cin >> password;
+
+	if (logIn)
+	{
+		if (!logedIn(username, password))
+		{
+			cout << "Please try again.\n";
+			logInOrSignIn();
+		}
+	}
+	else
+	{
+		newAccount(username, password);
+	}
+}
+
 
 //print the task like a matrix from file
-void printTask(string inputFile) {
+void printTask(string inputFile) 
+{
 	ifstream taskFile(inputFile, ios::in);
 	char task[1024];
 
@@ -43,7 +95,8 @@ void printTask(string inputFile) {
 }
 
 //check if the input from the player is the same as the one in the solution
-void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) {
+void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) 
+{
 	ifstream solFile(solutionFile, ios::in);
 	char solution[1024];
 	char temp[1024];
@@ -100,27 +153,27 @@ void checkSolution(string solutionFile, bool &levelIsFinished, bool &lostGame) {
 
 
 //choosing the file with the correct solution for the chosen level and version
-void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame) {
+void mySolution(int level, int version, bool &levelIsFinished, bool &lostGame)
+{
 	string solutionFile = "solutions/solx.x.txt";
 	solutionFile[13] = level + '0';
 	solutionFile[15] = version + '0';
 	checkSolution(solutionFile, levelIsFinished, lostGame);
-
-	
 }
 
 //choosing the file with the task for the chosen level and version
-void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) {
+void chooseLevel(int level, int version, bool &levelIsFinished, bool &lostGame) 
+{
 	string inputFile = "levelsTasks/Lx_Vx.txt";
 	inputFile[13] = level + '0';
 	inputFile[16] = version + '0';
 	printTask(inputFile);
 	mySolution(level, version, levelIsFinished, lostGame);
-
 }
 
 //the game step by step
-void playTheGame(bool &gameOver) {
+void playTheGame(bool &gameOver)
+{
 	cout << "Do you want to start a new game?" << endl << "For yes, enter 1, else enter 0!" << endl;
 	int yesOrNo = 0;
 	cin >> yesOrNo;
@@ -190,13 +243,18 @@ void playTheGame(bool &gameOver) {
 }
 
 
-int main() {
+int main()
+{
 	bool gameOver = false;
-	playTheGame(gameOver);
-
-	if (gameOver == true)
+	logInOrSignIn();
+	if (logedIn)
 	{
-		gameOver = false;
 		playTheGame(gameOver);
+
+		if (gameOver == true)
+		{
+			gameOver = false;
+			playTheGame(gameOver);
+		}
 	}
 }
