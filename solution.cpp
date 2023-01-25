@@ -41,6 +41,7 @@ bool logedIn(string username, string password)
 	{
 		return true;
 	}
+	openAccount.close();
 }
 
 void logInOrSignIn()
