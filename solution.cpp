@@ -182,11 +182,11 @@ void playTheGame(bool &gameOver)
 	int level = 0;
 	int version = 0;
 
+	bool levelIsChosen = false;
+	bool versionIsChosen = false;
+
 	if (yesOrNo == 1)
 	{
-		bool levelIsChosen = false;
-		bool versionIsChosen = false;
-
 		if (levelIsChosen == false)
 		{
 			cout << "Chose a level from 1 to 5!" << endl;
@@ -216,7 +216,8 @@ void playTheGame(bool &gameOver)
 					versionIsChosen = false;
 					levelIsFinished = false;
 					cin >> yesOrNo;
-					if (yesOrNo == 1) {
+					if (yesOrNo == 1)
+					{
 						gameOver = true;
 					}
 				}
@@ -232,7 +233,10 @@ void playTheGame(bool &gameOver)
 				versionIsChosen = false;
 				levelIsChosen = true;
 				cin >> yesOrNo;
-				
+				if (yesOrNo == 1) 
+				{
+					gameOver = true;
+				}
 			}
 		}
 
@@ -251,11 +255,11 @@ int main()
 	if (logedIn)
 	{
 		playTheGame(gameOver);
+	}
 
-		if (gameOver == true)
-		{
-			gameOver = false;
-			playTheGame(gameOver);
-		}
+	if (gameOver == true)
+	{
+		gameOver = false;
+		playTheGame(gameOver);
 	}
 }
