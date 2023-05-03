@@ -1,1 +1,1 @@
-# my-nonogram
+# Nonogram
